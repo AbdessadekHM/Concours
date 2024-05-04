@@ -3,7 +3,7 @@ $info = [
     'servername' => 'localhost:3000',
     'username' => 'root',
     'password' => '',
-    'DB_name' => 'auth_php'
+    'DB_name' => 'concours'
 ];
 class DB{
     private $conn;
@@ -18,8 +18,12 @@ class DB{
         }
         
     }
-    function Create($table,$data){
-        $query = "INSERT INTO $table(name,phone,email,password) VALUES (:name,:phone,:email,:password) ";
+    function Create($table,$columns,$data){
+        $columnNames = implode(',', $columns);
+
+        $placeholders = ':' . implode(',:', $columns);
+        
+        $query = "INSERT INTO $table ($columnNames) VALUES ($placeholders)";
         $statement = $this->conn->prepare($query);
         $statement->execute($data);
     }
@@ -35,8 +39,11 @@ class DB{
         $result = $statement->FetchAll();
         return $result;
     }
-    function Update($table,$data,$condition){
-        $query = "UPDATE $table SET name=:name,phone=:phone,email=:email,password=:password WHERE $condition";
+    function Update($table,$column,$data,$condition){
+        $setClause = implode(', ', array_map(function($column) {
+            return "$column = :$column";
+        }, $column));
+        $query = "UPDATE $table SET $setClause WHERE $condition";
         $statement = $this->conn->prepare($query);
         $statement->execute($data);
         
