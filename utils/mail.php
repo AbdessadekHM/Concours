@@ -4,8 +4,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-
-require '../vendor/autoload.php';
+require 'C:\xampp\htdocs\Concours\vendor\autoload.php';
+// require '..\vendor\autoload.php';
 
 
 class mailer{
@@ -58,7 +58,3 @@ $info = [
     'to_name' => 'Abdou',
     'reply_name' => 'information'
 ];
-$mail = new Mailer();
-$mail->Recipients($info);
-$mail->Content('hello','to what ','footer');
-$mail->Send();
