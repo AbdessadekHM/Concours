@@ -4,3 +4,4 @@ composer.lock
 *.json
 *.lock
 colors.txt
+uploads/
