@@ -47,7 +47,7 @@ if(isset($_SESSION['token']) && $_SESSION['token']==$_SESSION['real_token']){
                 return substr($value, 1); // Remove the first character (colon)
             }, $column);
             $file_name = $log ;
-    if($niveau == 2){
+    if($niveau == 3){
         $table = 'etud3a';
         Add_to_DB($table,$condition,$column,$data,$db);
         move($file_name,$cv,'cv');

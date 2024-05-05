@@ -36,18 +36,23 @@ $page_title = 'Register';
                                             <input required type="date" class="form-control" id="naissance"
                                                 name="naissance">
                                         </div>
+
                                         <div class="form-group pb-4">
                                             <label class='pb-3' for="diplome">Diplome</label>
-                                            <input required type="text" class="form-control" id="diplome"
-                                                name='diplome'>
+                                            <select required class="form-select" name='diplome'
+                                                aria-label="Default select example">
+                                                <option selected value="" disabled>Choisis un niveau</option>
+                                                <option value="2">BAC+2</option>
+                                                <option value="3">BAC+3</option>
+                                            </select>
                                         </div>
                                         <div class="form-group pb-4">
                                             <label class='pb-3' for="niveau">Niveau</label>
                                             <select required class="form-select" name='niveau'
                                                 aria-label="Default select example">
                                                 <option selected value="" disabled>Choisis un niveau</option>
-                                                <option value="2">BAC+2</option>
-                                                <option value="3">BAC+3</option>
+                                                <option value="3">annee 3</option>
+                                                <option value="4">annee 4</option>
                                             </select>
                                         </div>
                                     </div>
