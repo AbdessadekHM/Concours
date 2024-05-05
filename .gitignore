@@ -5,3 +5,4 @@ composer.lock
 *.lock
 colors.txt
 uploads/
+tmp_uploads/
