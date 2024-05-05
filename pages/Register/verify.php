@@ -1,8 +1,9 @@
 <?php
-
 include('../../utils/db.php');
-include_once('code.php');
-function existing_check($table,$condition,$column,$data,$db){
+include('../../utils/move_file.php');
+include_once('./code.php');
+
+function Add_to_DB($table,$condition,$column,$data,$db){
     $result =  $db->Read($table,$condition);
     if(!count($result)){
         $db->Create($table,$column,$data);
@@ -15,6 +16,8 @@ function existing_check($table,$condition,$column,$data,$db){
         $_SESSION['status'] = 0;
     }
 }
+
+echo "hello";
 if(isset($_SESSION['token']) && $_SESSION['token']==$_SESSION['real_token']){
     extract($_SESSION['userInfo']);
     $info_DB = [
@@ -26,7 +29,6 @@ if(isset($_SESSION['token']) && $_SESSION['token']==$_SESSION['real_token']){
     $db = new DB($info_DB);
     echo $niveau;
     $condition = "log='$log'";
-    $file_name = $log . "_" .$niveau;
         $data = [
             ':nom' => $nom,
             ':prenom' => $prenom,
@@ -44,21 +46,20 @@ if(isset($_SESSION['token']) && $_SESSION['token']==$_SESSION['real_token']){
             $column = array_map(function($value) {
                 return substr($value, 1); // Remove the first character (colon)
             }, $column);
-            print_r($cv);
-            echo $file_name;
-            echo $cv['tmp_name'];
+            $file_name = $log ;
     if($niveau == 2){
         $table = 'etud3a';
-        existing_check($table,$condition,$column,$data,$db);
-        $file_name = $log;
-    Store($cv,'cv',$file_name);
-    Store($photo,'photo',$file_name);
-        echo 324;
+        Add_to_DB($table,$condition,$column,$data,$db);
+        move($file_name,$cv,'cv');
+        move($file_name,$cv,'photo');
+        header('Location: ../LogIn/logIn.php');
+        
     }else{
         $table = 'etud4a';
-        existing_check($table,$condition,$column,$data,$db);
-        $file_name = $log;
-        Store($cv,'cv',$file_name);
-    Store($photo,'photo',$file_name);
-    }
+        Add_to_DB($table,$condition,$column,$data,$db);
+        move($file_name,$cv,'cv');
+        move($file_name,$cv,'photo');
+        header('Location: ../LogIn/logIn.php');
+        
+}
 }
