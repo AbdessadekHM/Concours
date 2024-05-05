@@ -16,9 +16,18 @@ $page_title = 'Dashboard';
                     <form action="users.php" method="post"
                         style="display:flex;justify-content:space-between;width:100%">
                         <h2>Admin</h2>
-                        <button type="submit" class="btn btn-primary col-md-1" name="list">
-                            Lister
-                        </button>
+                        <div style="display:flex;width:40%;justify-content:space-between">
+                            <div class="form-group mt-1">
+                                <select required class="form-select" name='filter' aria-label="Default select example">
+                                    <option selected value="0">all</option>
+                                    <option value="1">etudiants 3eme annee</option>
+                                    <option value="2">etudiants 4eme annee</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary col-md-3" name="list">
+                                Lister
+                            </button>
                     </form>
 
                 </div>
