@@ -1,4 +1,5 @@
 <?php 
+session_start();
 $page_title = 'Log In'; 
 ?>
 <?php include('../../includes/header.php') ?>
@@ -7,6 +8,11 @@ $page_title = 'Log In';
 
     <div class="container">
         <div class="row justify-content-center">
+            <?php if(isset($_SESSION['message'])): ?>
+            <h4 class="alert alert-<?php if($_SESSION['status']){echo 'success';}else{echo 'danger';} ?>">
+                <?= $_SESSION['message'] ?></h4>
+            <?php endif?>
+            <?php unset($_SESSION['message']) ?>
             <div class="col-md-5">
                 <div class="card shadow">
                     <div class="card-header text-center">

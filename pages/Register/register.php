@@ -1,5 +1,4 @@
 <?php 
-session_start();
 $page_title = 'Register';
 ?>
 <?php include('../../includes/header.php') ?>
@@ -9,11 +8,6 @@ $page_title = 'Register';
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <?php if(isset($_SESSION['message'])): ?>
-                <h4 class="alert alert-<?php if($_SESSION['status']){echo 'success';}else{echo 'danger';} ?>">
-                    <?= $_SESSION['message'] ?></h4>
-                <?php endif?>
-                <?php unset($_SESSION['message']) ?>
                 <div class="card shadow">
                     <div class="card-header text-center">
                         Register
