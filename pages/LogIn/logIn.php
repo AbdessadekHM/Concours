@@ -29,6 +29,16 @@ $page_title = 'Log In';
                                 <label class='pb-3' for="mdp">Mot de passe</label>
                                 <input type="password" class="form-control" id="mdp" name="mdp">
                             </div>
+                            <div>
+                                <div class="form-group col-md-6">
+                                    <select required class="form-select" name='filter'
+                                        aria-label="Default select example">
+                                        <option selected value="0" disabled>Choose the year</option>
+                                        <option value="1">etudiants 3eme annee</option>
+                                        <option value="2">etudiants 4eme annee</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="row form-group pt-5 pe-3 justify-content-end">
                                 <button class=" col-md-2 btn btn-primary " type="submit">
                                     Submit
